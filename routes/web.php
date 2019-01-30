@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Support\Facades\Auth;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -18,3 +20,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('categories', 'Category\CategoryController');
+Route::get('datatables/getcategories', 'Category\CategoryController@getCategories')->name('datatables.getcategories');
+Route::post('categories/create', 'Category\CategoryController@create');
